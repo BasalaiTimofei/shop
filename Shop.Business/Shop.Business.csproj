@@ -49,5 +49,11 @@
     <Folder Include="Models\" />
     <Folder Include="Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shop.Data\Shop.Data.csproj">
+      <Project>{80a96f07-70c0-4914-b5df-4027a73ac2b0}</Project>
+      <Name>Shop.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

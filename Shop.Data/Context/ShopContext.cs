@@ -18,16 +18,16 @@ namespace Shop.Data.Context
         {
         }
     }
-
+    
     public class StoreDbInitializer : DropCreateDatabaseIfModelChanges<ShopContext>
     {
         protected override void Seed(ShopContext context)
         {
-            context.Products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Product One", Cost = 1m });
-            context.Products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Product Two", Cost = 2m });
-            context.Products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Product Three", Cost = 3m });
-            context.Products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Product Four", Cost = 4m });
-            context.Products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Product Five", Cost = 5m });
+            context.Products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Product One", Price = 1m });
+            context.Products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Product Two", Price = 2m });
+            context.Products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Product Three", Price = 3m });
+            context.Products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Product Four", Price = 4m });
+            context.Products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Product Five", Price = 5m });
             context.SaveChanges();
         }
     }
