@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Shop.Business.Infrastructure;
@@ -39,12 +40,21 @@ namespace Shop.Business.Services
 
         public void Add(Product product)
         {
-            if (product == null || product.Price < 0 
+            if (product == null || product.Price < 0
                                 || string.IsNullOrEmpty(product.Name)
-                                || _uow.Products.GetByName(product.Name) == null)
+                                || !ProductIsInDb(
+                                    p => string.Equals(p.Name, product.Name, StringComparison.CurrentCultureIgnoreCase),
+                                    out var videoDb))
                 throw new ValidationException("Модель невалидна", "");
 
             _uow.Products.Create(_mapper.Map<Data.Models.Product>(product));
+        }
+
+        private bool ProductIsInDb(Predicate<Data.Models.Product> condition,
+            out IEnumerable<Data.Models.Product> product)
+        {
+            product = _uow.Products.Find(condition);
+            return product.Any();
         }
 
         public void Dispose()

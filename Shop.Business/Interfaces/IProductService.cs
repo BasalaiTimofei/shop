@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Shop.Business.Models;
 
 namespace Shop.Business.Interfaces
 {
-    interface IProductService
+    public interface IProductService
     {
+        Product Get(string id);
+        IEnumerable<Product> GetAll();
+        void Add(Product product);
+        void Dispose();
     }
 }
